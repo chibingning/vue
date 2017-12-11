@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="suggest">
+            <div class="suggest__input">
+                <input v-model="keyword" type="text">
+            </div>
+
+            <ul class="suggest__list">
+                <li v-for="suggest in suggestList" :key="suggest">{{suggest}}</li> 
+            </ul>
+        </div>
+
+    </div>
+
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+
+            data: {
+                keyword: 'k1',
+                dataSource: ['k1', 'k2', 'k3', 'a1', 'a2', 'b1', 'b2'],
+
+            },
+
+            computed: {
+                suggestList: function () {
+                    var list = [];
+                    for (k in this.dataSource) {
+                        var suggest = this.dataSource[k];
+                        if ('' != this.keyword && -1 != suggest.indexOf(this.keyword)) {
+                            list.push(suggest);
+                        }
+                    }
+                    return list;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
