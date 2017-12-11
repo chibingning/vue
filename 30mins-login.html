@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <!-- <el-container>
+            <el-row>
+                <el-col :span="24">
+                    <el-input v-model="input" placeholder="请输入内容"></el-input>
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-col :span="24">
+                    <el-input v-model="input" placeholder="请输入内容"></el-input>
+                </el-col>
+                <el-col :span="24">
+                            <el-button type="primary">主要按钮</el-button>
+                    </el-col>
+            </el-row>
+
+        </el-container> -->
+        <el-container>
+            <el-header>Header</el-header>
+            <el-main>
+                <el-row>
+                    <el-col :span="8">
+                        <el-input v-model="input" placeholder="usename"></el-input>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="8">
+                        <el-input v-model="input1" placeholder="password"></el-input>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="8">
+                        <el-button type="primary" :loading="loading" @click="open">login</el-button>
+                    </el-col>
+                </el-row>
+            </el-main>
+            <el-footer>Footer</el-footer>
+        </el-container>
+
+    </div>
+</body>
+<!-- 先引入 Vue -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                loading: false,
+                input: '',
+                input1: ''
+
+            }
+        },
+        methods: {
+
+            open: function () {
+                this.loading = true;
+                setTimeout(function () {
+                    this.loading = false;
+                    this.$alert("123");
+                }.bind(this), 2000); //绑定当前.bind(this)
+
+            }
+        }
+
+    })
+</script>
+
+</html>
